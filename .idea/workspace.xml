@@ -28,8 +28,8 @@
       <file leaf-file-name="index.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/blog/index.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9164345" vertical-offset="46" max-vertical-offset="645">
-              <caret line="25" column="0" selection-start-line="1" selection-start-column="2" selection-end-line="25" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.16713092" vertical-offset="0" max-vertical-offset="645">
+              <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -1120,8 +1120,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/blog/index.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9164345" vertical-offset="46" max-vertical-offset="645">
-          <caret line="25" column="0" selection-start-line="1" selection-start-column="2" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.16713092" vertical-offset="0" max-vertical-offset="645">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
           <folding />
         </state>
       </provider>
