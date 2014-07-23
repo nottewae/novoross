@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="175812998">
+    <data-source source="LOCAL" name="Rails novoross: development" uuid="394e0ac0-cb43-4050-b5ac-ca832e60f4da">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:novoross</jdbc-url>
+      <user-password>dfc0dfe3dfcedfc1dfe5dfdadfd9df92dfc6dfc0dfc4dfccdfdddfcedfd9dfd0dfc9dfffdfcedfd0dfd2df99</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails novoross: test" uuid="e3e84601-0eee-4389-a880-5ec958989267">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:novoross-test</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails novoross: production" uuid="1b1f8c77-6182-49f0-b186-1b3bb01c9612">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:novoross</jdbc-url>
+      <user-password>dfc0dfe3dfcedfc1dfe5dfdadfd9df92dfc6dfc0dfc4dfccdfdddfcedfd9dfd0dfc9dfffdfcedfd0dfd2df99</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

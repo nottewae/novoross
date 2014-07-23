@@ -1,10 +1,34 @@
 Rails.application.routes.draw do
+
+
+  get 'blogs/show'
+
+  get 'blog/show'
+
+  mount Ckeditor::Engine => '/ckeditor'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'blog#index'
+  resources :blogs
+  get '/delete_photo/:id'=>'ajax#delete_image',as:"delete_photo"
+  resources :ajax do
+    collection do
+      post 'login'=>'ajax#login', as: 'login'
+      get 'logout'=>'ajax#logout',as:"logout"
+      post 'add_photo'=>'ajax#add_photo', as:"add_photo"
 
+      put 'edit_post'=>'ajax#edit_post'
+
+
+      get  'delete_post/:id'=>'ajax#delete_post'
+
+
+      post 'create_post'=>'ajax#create_post'
+      get 'get_post/:id'=>'ajax#get_post'
+    end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

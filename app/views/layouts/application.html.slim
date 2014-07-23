@@ -1,0 +1,197 @@
+doctype html
+html lang="en"
+
+  head
+
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    meta name="description" content=""
+    meta name="author" content=""
+
+    title Мирное небо
+
+
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+
+
+
+    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    / WARNING: Respond.js doesn't work if you view the page via file://
+    /[if lt IE 9]
+      script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"
+      script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"
+    = stylesheet_link_tag "http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css", :media=>"all"
+  body ng-app="Novoross"
+    - if @admin
+      - is_admin=true
+      - email=@admin.email
+    - else
+      - is_admin=false
+      - email=nil
+    div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+      div class="modal-dialog"
+        div id="AdminController" class="modal-content" ng-controller="AdminController" ng-init="init({is_admin:#{is_admin.to_json},email:#{email.to_json}})"
+          = form_for :admin,html:{id:"login_form"}, remote:true, url:login_ajax_index_path,:authenticity_token => true do |f|
+            div class="modal-header"
+              button type="button" class="close" data-dismiss="modal"
+                span aria-hidden="true" &times;
+                span class="sr-only" Close
+              h4 class="modal-title" id="myModalLabel" Войти на сайт
+
+            .modal-body
+                .control-group
+                  = f.label :email ,"E-Mail",class:"control-label"
+                  .controls
+                    = f.email_field :email, class:"input-xlarge", placeholder:"Введите емайл"
+                    p.help-block Введите сюда ваш адрес электронной почты
+                  = f.label :password, "Пароль",class:"control-label"
+                  .controls
+                    = f.password_field :password, placeholder:"Введите пароль", class:"input-xlarge"
+                    p.help-block Введите сюда ваш Пароль
+            .modal-footer
+              button type="button" class="btn btn-default" data-dismiss="modal" Отмена
+              =f.submit "Вход" ,class:"btn btn-primary"
+
+
+    div class="modal fade" id="newPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+      div class="modal-dialog"
+        div  class="modal-content" ng-controller="AdminController" ng-init="init({is_admin:#{is_admin.to_json},email:#{email.to_json}})"
+          = form_for :image, html:{id:"photo_form"}, remote:true, url:add_photo_ajax_index_path,:authenticity_token => true do |f|
+            div class="modal-header"
+              button type="button" class="close" data-dismiss="modal"
+                span aria-hidden="true" &times;
+                span class="sr-only" Close
+              h4 class="modal-title" id="myModalLabel" Добавить фото
+
+            .modal-body
+              .control-group
+                = f.label :blog_id ,"Связанная публикация",class:"control-label"
+
+                .controls
+                  = f.select :blog_id, (Blog.all.collect {|p| [ p.title, p.id ] }).push(["Нет связи",nil]),class:"selectpicker"
+                  p.help-block Выберите связанную публикацию
+                = f.label :image, "Фото",class:"control-label"
+                .controls
+                  = f.file_field :image, placeholder:"Выберите файл для загрузки", class:"input-xlarge"
+                  p.help-block Выберите изображение на компьютере
+            .modal-footer
+              button type="button" class="btn btn-default" data-dismiss="modal" Отмена
+              =f.submit "Загрузить" ,class:"btn btn-primary"
+
+
+
+    div class="modal fade" id="newPost" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+      div class="modal-dialog"
+        div class="modal-content"
+          - if controller_name=="blogs"
+            -path=edit_post_ajax_index_path
+          - else
+            -path=create_post_ajax_index_path
+          = form_for @blog,html:{id:"blog_form"}, remote:true, url:path ,:authenticity_token => true do |f|
+            div class="modal-header"
+              button type="button" class="close" data-dismiss="modal"
+                span aria-hidden="true" &times;
+                span class="sr-only" Close
+              h4 class="modal-title" id="myModalLabel" Публикация
+
+            .modal-body
+              - if controller_name=="blogs"
+                = f.hidden_field :blog_id ,value:params[:id]
+              .control-group
+                = f.label :title ,"Заголовок",class:"control-label"
+
+                .controls
+                  = f.text_field :title, class:"input-xlarge", placeholder:"введите заголовок"
+
+
+                = f.label :prev_text ,"Литабзац",class:"control-label"
+
+                .controls
+                  = f.cktext_area :prev_text, placeholder:"...", :ckeditor => {:toolbar => 'NoImage',height:100},style:"height:171px;"
+
+                = f.label :text, "Содержание статьи",class:"control-label"
+                .controls
+                  = f.cktext_area :text, placeholder:"...", :ckeditor => { :toolbar => 'Basic',height:100},style:"height:171px;"
+              .modal-footer
+                button type="button" class="btn btn-default" data-dismiss="modal" Отмена
+                =f.submit "Создать публикацию" ,class:"btn btn-primary"
+
+
+
+    nav id="AdminController2" class="navbar navbar navbar-fixed-top sky-navbar" role="navigation" ng-controller="AdminController" ng-init="init({is_admin:#{is_admin.to_json},email:#{email.to_json}})"
+      div class="container"
+        div class="navbar-header"
+          button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+            span class="sr-only" Toggle navigation
+            span class="icon-bar"
+            span class="icon-bar"
+            span class="icon-bar"
+          a class="navbar-brand" href="#"
+            img src="#{asset_path "logo.png"}" alt=""
+        div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
+          ul class="nav navbar-nav"
+            li
+              = link_to "Блог", root_path
+
+            li
+              a href="#" Фото
+
+            li
+              a href="#" Контакты
+            li
+
+              button class="right btn btn-primary mg-top_8" data-toggle="modal" data-target="#myModal" ng-show="!getAdmin()"  Войти
+              =link_to '#' , 'ng-show'=>"getAdmin()",id:"logout_link", "ng-click"=>"logout()" do
+                |Выход ({{getEmail()}})
+
+
+
+
+
+
+
+    div class="container" ng-controller="AdminController" ng-init="init({is_admin:#{is_admin.to_json},email:#{email.to_json}})" id="AdminController3"
+      nav class="navbar navbar-default" role="navigation" ng-if="getAdmin()"
+        button class="btn btn-success" data-toggle="modal" data-target="#newPost"
+          -if controller_name=="blogs"
+            |Изменить публикацию
+          -else
+            |Добавить публикацию
+          span class="glyphicon glyphicon-plus-sign"
+        button class="btn btn-success" data-toggle="modal" data-target="#newPhoto"
+          |Добавить фото
+          span class="glyphicon glyphicon-picture"
+        - if controller_name=="blogs"
+          button class="btn btn-danger"  id="delete_blog" data-id="#{@blog.id}" ng-click="deleteBlog($event)"
+            |Удалить публикацию
+
+      = yield
+      footer
+        div class="row"
+          div class="col-lg-12"
+            div class="row sep"
+              .col-md-2
+                p Пункт сбора гуманитарной помощи:
+                p  БП «Румянцево» Корпус  Г, 6 пандус, 5 этаж, на воротах лого «Мирное Небо»
+
+              .col-md-2
+                p Финансовая помощь:
+                p  Сбербанк 6761 9600 0176 9845 41
+
+              .col-md-2
+                p Контакты:
+                p  sp.mirnoenebo@yandex.ru
+              .col-md-2
+                p Кураторы:
+                p  +7(926)469-47-66 Светлана
+                p  +7(925)299-75-96 Кристина
+
+              .col-md-2
+                p Список и контакты филиалов:
+                p  -тут пока пусто-
+
+
+
+

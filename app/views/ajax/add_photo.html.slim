@@ -1,0 +1,22 @@
+div class="row"
+  - if @image.blog
+    p Связанная публикация:
+    h1 = @image.blog.title
+
+  div class="col-md-12"
+
+    img class="img-responsive img-rounded" src="#{@image.image.small}" alt=""
+    p Уменьшенное
+  .clearfix
+  div class="col-md-12"
+
+    img class="img-responsive img-rounded" src="#{@image.image.big}" alt=""
+    p Полноразмерное
+    .clearfix
+  div class="col-md-12"
+
+    img class="img-responsive img-rounded" src="#{@image.image}" alt=""
+    p Исходное
+    .clearfix
+  = link_to "На главную", root_path, class:""
+
