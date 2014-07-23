@@ -2,7 +2,7 @@
   div class="row"
 
     div class="col-md-8"
-      -  @blogs[0].images.size>0
+      -  if @blogs[0].images.size>0
         -image=@blogs[0].images[0].image.small
       -else
         -image="http://placehold.it/900x350"
