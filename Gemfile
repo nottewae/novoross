@@ -36,7 +36,7 @@ gem 'mini_magick'
 
 # Use unicorn as the app server
 gem 'unicorn'
-
+gem 'dalli'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
