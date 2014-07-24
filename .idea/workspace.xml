@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a7e802fc-3d4c-4c23-998f-a251b9ed5da8" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/images/summer-sky-1.jpeg" afterPath="$PROJECT_DIR$/app/assets/images/summer_sky.jpeg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/blog.css.scss.erb" afterPath="$PROJECT_DIR$/app/assets/stylesheets/blog.css.scss.erb" />
-    </list>
+    <list default="true" id="a7e802fc-3d4c-4c23-998f-a251b9ed5da8" name="Default" comment="" />
     <ignored path="novoross.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -559,7 +556,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bprum.ru" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="true" />
     <property name="recentsLimit" value="5" />
