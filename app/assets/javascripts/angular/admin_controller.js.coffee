@@ -59,6 +59,7 @@ $(document).ready ()->
       scope3.$apply('setAdmin()')
       scope3.$apply('setEmail("'+data.email+'")')
       $("#myModal").modal('hide')
+      window.location.reload()
     else
 
       scope.$apply('desetAdmin()')
