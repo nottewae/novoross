@@ -24,6 +24,7 @@ html lang="en"
       script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"
     = stylesheet_link_tag "http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css", :media=>"all"
   body ng-app="Novoross"
+    == render "partials/photos_modal"
     - if @admin
       - is_admin=true
       - email=@admin.email
