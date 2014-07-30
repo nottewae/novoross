@@ -7,8 +7,8 @@
         -image=@blog.images[0].image.big
       -else
         -image="http://placehold.it/1200x600"
-      img id="big-image" class="img-responsive img-rounded" src="#{image}" data-image_id="#{@blog.images[0].id}" alt=""
-      = link_to "удалить", '#' , class:"btn btn-danger" , "ng-click"=>"deleteImage($event)", "data-image_id"=>"#{@blog.images[0].id}",id:"delete_big","ng-if"=>"getAdmin()"
+      img id="big-image" class="img-responsive img-rounded" src="#{image}" data-image_id="#{@blog.images[0] ? @blog.images[0].id : "none"}" alt=""
+      = link_to "удалить", '#' , class:"btn btn-danger" , "ng-click"=>"deleteImage($event)", "data-image_id"=>"#{@blog.images[0] ? @blog.images[0].id : "none"}",id:"delete_big","ng-if"=>"getAdmin()"
   - if @blog.images.size>1
     .container
       div class="row row-top-pad-20"
