@@ -19,3 +19,4 @@
 //= require angular/init
 //= require angular/admin_controller
 //= require blog
+//= require bootstrap-image-gallery.min

@@ -43,7 +43,7 @@
     $rootScope.data.user_email=params.email
     $log.info $rootScope
   $scope.login_data={}
-  $scope.login=()->
+
 $(document).ready ()->
   $("#login_form").on "ajax:success", (e, data, status, xhr) ->
     console.log data
@@ -85,6 +85,7 @@ $(document).ready ()->
     .val('')
     .removeAttr('checked')
     .removeAttr('selected')
+    window.location.reload()
   $('#blog_form').on "ajax:success",(e, data, status, xhr)->
     if data.id and $("body").find("#blog_"+data.id).length>0
       $("body").find("#blog_"+data.id).html(data.prev_text)

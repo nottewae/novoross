@@ -23,6 +23,21 @@ html lang="en"
       script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"
       script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"
     = stylesheet_link_tag "http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css", :media=>"all"
+    = stylesheet_link_tag "http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css"
+    javascript:
+
+      document.getElementById('links').onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
+                link = target.src ? target.parentNode : target,
+                options = {index: link, event: event},
+                links = this.getElementsByTagName('a');
+        blueimp.Gallery(links, options);
+      };
+    = javascript_include_tag "http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"
+
+
+
   body ng-app="Novoross"
     == render "partials/photos_modal"
     - if @admin
@@ -55,6 +70,29 @@ html lang="en"
               button type="button" class="btn btn-default" data-dismiss="modal" Отмена
               =f.submit "Вход" ,class:"btn btn-primary"
 
+    div class="modal fade" id="newContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+      div class="modal-dialog"
+        .modal-content
+          = form_for :contact,html:{id:"contact_form"}, remote:true, url:login_ajax_index_path,:authenticity_token => true do |f|
+            div class="modal-header"
+              button type="button" class="close" data-dismiss="modal"
+                span aria-hidden="true" &times;
+                span class="sr-only" Close
+              h4 class="modal-title" id="myModalLabel" Добавить секцию
+
+            .modal-body
+              .control-group
+                = f.label :email ,"E-Mail",class:"control-label"
+                .controls
+                  = f.email_field :email, class:"input-xlarge", placeholder:"Введите емайл"
+                  p.help-block Введите сюда ваш адрес электронной почты
+                = f.label :password, "Пароль",class:"control-label"
+                .controls
+                  = f.password_field :password, placeholder:"Введите пароль", class:"input-xlarge"
+                  p.help-block Введите сюда ваш Пароль
+            .modal-footer
+              button type="button" class="btn btn-default" data-dismiss="modal" Отмена
+              =f.submit "Вход" ,class:"btn btn-primary"
 
     div class="modal fade" id="newPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
       div class="modal-dialog"
@@ -137,15 +175,16 @@ html lang="en"
               = link_to "Блог", root_path
 
             li
-              a href="#" Фото
+              = link_to "Фото", photos_path
 
             li
-              a href="#" Контакты
+              = link_to "Контакты", contacts_path
             li
-
-              button class="right btn btn-primary mg-top_8" data-toggle="modal" data-target="#myModal" ng-show="!getAdmin()"  Войти
-              =link_to '#' , 'ng-show'=>"getAdmin()",id:"logout_link", "ng-click"=>"logout()" do
-                |Выход ({{getEmail()}})
+              - unless @admin
+                button class="right btn btn-primary mg-top_8" data-toggle="modal" data-target="#myModal" ng-show="!getAdmin()"  Войти
+              - else
+                =link_to '#' , 'ng-show'=>"getAdmin()",id:"logout_link", "ng-click"=>"logout()" do
+                  |Выход ({{getEmail()}})
 
 
 
@@ -154,19 +193,24 @@ html lang="en"
 
 
     div class="container" ng-controller="AdminController" ng-init="init({is_admin:#{is_admin.to_json},email:#{email.to_json}})" id="AdminController3"
-      nav class="navbar navbar-default" role="navigation" ng-if="getAdmin()"
-        button class="btn btn-success" data-toggle="modal" data-target="#newPost"
-          -if controller_name=="blogs"
-            |Изменить публикацию
-          -else
-            |Добавить публикацию
-          span class="glyphicon glyphicon-plus-sign"
-        button class="btn btn-success" data-toggle="modal" data-target="#newPhoto"
-          |Добавить фото
-          span class="glyphicon glyphicon-picture"
-        - if controller_name=="blogs"
-          button class="btn btn-danger"  id="delete_blog" data-id="#{@blog.id}" ng-click="deleteBlog($event)"
-            |Удалить публикацию
+      - if @admin and action_name!="contacts"
+        nav class="navbar navbar-default" role="navigation" ng-if="getAdmin()"
+          button class="btn btn-success" data-toggle="modal" data-target="#newPost"
+            -if controller_name=="blogs"
+              |Изменить публикацию
+            -else
+              |Добавить публикацию
+            span class="glyphicon glyphicon-plus-sign"
+          button class="btn btn-success" data-toggle="modal" data-target="#newPhoto"
+            |Добавить фото
+            span class="glyphicon glyphicon-picture"
+          - if controller_name=="blogs"
+            button class="btn btn-danger"  id="delete_blog" data-id="#{@blog.id}" ng-click="deleteBlog($event)"
+              |Удалить публикацию
+      - elsif @admin
+        nav class="navbar navbar-default" role="navigation" ng-if="getAdmin()"
+          button class="btn btn-success" data-toggle="modal" data-taget="#newContact"
+            |Добавить секцию
 
       = yield
       footer

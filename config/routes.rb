@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'blogs/show'
 
   get 'blog/show'
-
+  get 'blog/contacts', as:"contacts"
   mount Ckeditor::Engine => '/ckeditor'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -29,6 +29,8 @@ Rails.application.routes.draw do
       get 'get_post/:id'=>'ajax#get_post'
     end
   end
+
+  resources :photos
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
