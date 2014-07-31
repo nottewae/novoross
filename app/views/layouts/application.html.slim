@@ -73,7 +73,7 @@ html lang="en"
     div class="modal fade" id="newContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
       div class="modal-dialog"
         .modal-content
-          = form_for :contact,html:{id:"contact_form"}, remote:true, url:login_ajax_index_path,:authenticity_token => true do |f|
+          = form_for :contact,html:{id:"contact_form"}, remote:true, url:new_contact_path,:authenticity_token => true do |f|
             div class="modal-header"
               button type="button" class="close" data-dismiss="modal"
                 span aria-hidden="true" &times;
@@ -88,7 +88,7 @@ html lang="en"
                   p.help-block Заголовок секции
                 = f.label :text, "Текст",class:"control-label"
                 .controls
-                  = f.password_field :password, placeholder:"Введите текст", class:"input-xlarge"
+                  = f.cktext_area :text,  :ckeditor => {:toolbar => 'Basic',height:100},style:"height:171px;"
                   p.help-block Введите сюда содержимое секции
             .modal-footer
               button type="button" class="btn btn-default" data-dismiss="modal" Отмена
@@ -209,7 +209,7 @@ html lang="en"
               |Удалить публикацию
       - elsif @admin
         nav class="navbar navbar-default" role="navigation" ng-if="getAdmin()"
-          button class="btn btn-success" data-toggle="modal" data-taget="#newContact"
+          button class="btn btn-success" data-toggle="modal" data-target="#newContact"
             |Добавить секцию
 
       = yield

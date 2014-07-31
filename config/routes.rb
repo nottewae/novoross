@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'blog/show'
   get 'blog/contacts', as:"contacts"
+  post 'blog/create_contact', as: "new_contact"
+  get 'blog/destroy_contact',as: "destroy_contact"
   mount Ckeditor::Engine => '/ckeditor'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

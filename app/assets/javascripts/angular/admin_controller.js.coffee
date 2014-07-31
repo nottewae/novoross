@@ -2,6 +2,9 @@
   $scope.data={
     is_admin:false
   }
+  $scope.deleteContact=(id)->
+    $http({method: 'GET', url: '/blog/destroy_contact?id='+id}).success (data)->
+      window.location.href="/blog/contacts"
   $scope.setBig=(image,e)->
     $("#big-image").attr('src',image)
     $("#delete_big").attr('data-image_id',$(e.target).attr('data-id'))
@@ -92,5 +95,9 @@ $(document).ready ()->
     else
       window.location.reload()
     $("#newPost").modal('hide')
+  $('#contact_form').on "ajax:success",(e, data, status, xhr)->
+    $("#contactPost").modal('hide')
+    window.location.reload()
+
   $("a").click ()->
     window.location.href=$(this).attr('href')
