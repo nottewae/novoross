@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7e802fc-3d4c-4c23-998f-a251b9ed5da8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/angular/admin_controller.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/angular/admin_controller.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.slim" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.slim" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/blog.css.scss.erb" afterPath="$PROJECT_DIR$/app/assets/stylesheets/blog.css.scss.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/blog_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/blog_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="novoross.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,8 +68,8 @@
       <file leaf-file-name="application.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27863777" vertical-offset="1035" max-vertical-offset="3720">
-              <caret line="75" column="94" selection-start-line="75" selection-start-column="73" selection-end-line="75" selection-end-column="94" />
+            <state vertical-scroll-proportion="1.5789474" vertical-offset="900" max-vertical-offset="3720">
+              <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -1193,8 +1186,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27863777" vertical-offset="1035" max-vertical-offset="3720">
-          <caret line="75" column="94" selection-start-line="75" selection-start-column="73" selection-end-line="75" selection-end-column="94" />
+        <state vertical-scroll-proportion="1.5789474" vertical-offset="900" max-vertical-offset="3720">
+          <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
           <folding />
         </state>
       </provider>
