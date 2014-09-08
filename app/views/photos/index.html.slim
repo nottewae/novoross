@@ -8,7 +8,7 @@
             -title=photo.blog.title
           -else
             -title=""
-          -if photo.image and photo.image!=""
+          -if photo.image and photo.image!="" and File.exist?(photo.image.path)
             a href="#{photo.image}" data-gallery="" title="#{title}"
               img.col-xs-12 src="#{photo.image.small}" style="width:200px;"
   - Image.where(:blog_id => nil).each do |photo|
