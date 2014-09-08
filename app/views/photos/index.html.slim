@@ -1,20 +1,22 @@
 #links
   - Blog.all.each do |blog|
-    .col-xs-4
-      h4 = blog.title
-      - blog.images.each do |photo|
+    .row
+      .col-xs-12
+        h2 = blog.title
+        - blog.images.each do |photo|
+          -if photo.blog
+            -title=photo.blog.title
+          -else
+            -title=""
+          a href="#{photo.image}" data-gallery="" title="#{title}"
+            img.col-xs-12 src="#{photo.image.small}" style="width:200px;"
+  - Image.where(:blog_id => nil).each do |photo|
+    .row
+      .col-xs-12
         -if photo.blog
           -title=photo.blog.title
         -else
           -title=""
+        h2 Без публикации
         a href="#{photo.image}" data-gallery="" title="#{title}"
           img.col-xs-12 src="#{photo.image.small}" style="width:200px;"
-  - Image.where(:blog_id => nil).each do |photo|
-    .col-xs-4
-      -if photo.blog
-        -title=photo.blog.title
-      -else
-        -title=""
-      h4 Без публикации
-      a href="#{photo.image}" data-gallery="" title="#{title}"
-        img.col-xs-12 src="#{photo.image.small}" style="width:200px;"
