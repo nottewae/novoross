@@ -8,8 +8,9 @@
             -title=photo.blog.title
           -else
             -title=""
-          a href="#{photo.image}" data-gallery="" title="#{title}"
-            img.col-xs-12 src="#{photo.image.small}" style="width:200px;"
+          -if photo.image and photo.image!=""
+            a href="#{photo.image}" data-gallery="" title="#{title}"
+              img.col-xs-12 src="#{photo.image.small}" style="width:200px;"
   - Image.where(:blog_id => nil).each do |photo|
     .row
       .col-xs-12
@@ -18,5 +19,6 @@
         -else
           -title=""
         h2 Без публикации
-        a href="#{photo.image}" data-gallery="" title="#{title}"
-          img.col-xs-12 src="#{photo.image.small}" style="width:200px;"
+        -if photo.image and photo.image!=""
+          a href="#{photo.image}" data-gallery="" title="#{title}"
+            img.col-xs-12 src="#{photo.image.small}" style="width:200px;"
