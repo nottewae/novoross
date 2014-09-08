@@ -16,7 +16,9 @@
     - i=0
     - @blogs.each do |blog|
       -if i!=0
-        div class="col-xs-4"
+        - if (i-1)%3==0
+          .row
+        div class="col-md-4"
           h2 =blog.title
           p =raw blog.prev_text
           =link_to "Подробно",blog, class:"btn btn-default","data-no-turbolink"=>""
