@@ -1,12 +1,12 @@
 -if @blogs.size>0
   div class="row"
-    div class="col-xs-8"
+    div class="col-md-8"
       -  if @blogs[0].images.size>0
         -image=@blogs[0].images[0].image.small
       -else
         -image="http://placehold.it/900x350"
       img class="img-responsive img-rounded" src="#{image}" alt=""
-    div class="col-xs-4"
+    div class="col-md-4"
       h1 =@blogs[0].title
       p = raw @blogs[0].prev_text
       =link_to "Подробно", @blogs[0],class:"btn btn-primary btn-lg", "data-no-turbolink"=>""
