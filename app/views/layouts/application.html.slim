@@ -1,22 +1,14 @@
 doctype html
 html lang="en"
-
   head
-
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
     meta name="description" content=""
     meta name="author" content=""
-
     title Мирное небо
-
-
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
-
-
-
     / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     / WARNING: Respond.js doesn't work if you view the page via file://
     /[if lt IE 9]
@@ -25,7 +17,6 @@ html lang="en"
     = stylesheet_link_tag "http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css", :media=>"all"
     = stylesheet_link_tag "http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css"
     javascript:
-
       document.getElementById('links').onclick = function (event) {
         event = event || window.event;
         var target = event.target || event.srcElement,
@@ -35,9 +26,6 @@ html lang="en"
         blueimp.Gallery(links, options);
       };
     = javascript_include_tag "http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"
-
-
-
   body ng-app="Novoross"
     == render "partials/photos_modal"
     - if @admin
@@ -55,7 +43,6 @@ html lang="en"
                 span aria-hidden="true" &times;
                 span class="sr-only" Close
               h4 class="modal-title" id="myModalLabel" Войти на сайт
-
             .modal-body
                 .control-group
                   = f.label :email ,"E-Mail",class:"control-label"
@@ -69,7 +56,6 @@ html lang="en"
             .modal-footer
               button type="button" class="btn btn-default" data-dismiss="modal" Отмена
               =f.submit "Вход" ,class:"btn btn-primary"
-
     div class="modal fade" id="newContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
       div class="modal-dialog"
         .modal-content
@@ -79,7 +65,6 @@ html lang="en"
                 span aria-hidden="true" &times;
                 span class="sr-only" Close
               h4 class="modal-title" id="myModalLabel" Добавить секцию
-
             .modal-body
               .control-group
                 = f.label :title ,"Заголовок",class:"control-label"
@@ -93,7 +78,6 @@ html lang="en"
             .modal-footer
               button type="button" class="btn btn-default" data-dismiss="modal" Отмена
               =f.submit "Добавить" ,class:"btn btn-primary"
-
     div class="modal fade" id="newPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
       div class="modal-dialog"
         div  class="modal-content" ng-controller="AdminController" ng-init="init({is_admin:#{is_admin.to_json},email:#{email.to_json}})"
@@ -103,11 +87,9 @@ html lang="en"
                 span aria-hidden="true" &times;
                 span class="sr-only" Close
               h4 class="modal-title" id="myModalLabel" Добавить фото
-
             .modal-body
               .control-group
                 = f.label :blog_id ,"Связанная публикация",class:"control-label"
-
                 .controls
                   = f.select :blog_id, (Blog.all.collect {|p| [ p.title, p.id ] }).push(["Нет связи",nil]),class:"selectpicker"
                   p.help-block Выберите связанную публикацию
@@ -118,9 +100,6 @@ html lang="en"
             .modal-footer
               button type="button" class="btn btn-default" data-dismiss="modal" Отмена
               =f.submit "Загрузить" ,class:"btn btn-primary"
-
-
-
     div class="modal fade" id="newPost" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
       div class="modal-dialog"
         div class="modal-content"
@@ -134,31 +113,22 @@ html lang="en"
                 span aria-hidden="true" &times;
                 span class="sr-only" Close
               h4 class="modal-title" id="myModalLabel" Публикация
-
             .modal-body
               - if controller_name=="blogs"
                 = f.hidden_field :blog_id ,value:params[:id]
               .control-group
                 = f.label :title ,"Заголовок",class:"control-label"
-
                 .controls
                   = f.text_field :title, class:"input-xlarge", placeholder:"введите заголовок"
-
-
                 = f.label :prev_text ,"Литабзац",class:"control-label"
-
                 .controls
                   = f.cktext_area :prev_text, placeholder:"...", :ckeditor => {:toolbar => 'NoImage',height:100},style:"height:171px;"
-
                 = f.label :text, "Содержание статьи",class:"control-label"
                 .controls
                   = f.cktext_area :text, placeholder:"...", :ckeditor => { :toolbar => 'Basic',height:100},style:"height:171px;"
               .modal-footer
                 button type="button" class="btn btn-default" data-dismiss="modal" Отмена
                 =f.submit "Создать публикацию" ,class:"btn btn-primary"
-
-
-
     nav id="AdminController2" class="navbar navbar navbar-fixed-top sky-navbar" role="navigation" ng-controller="AdminController" ng-init="init({is_admin:#{is_admin.to_json},email:#{email.to_json}})"
       div class="container"
         div class="navbar-header"
@@ -173,10 +143,8 @@ html lang="en"
           ul class="nav navbar-nav"
             li
               = link_to "Блог", root_path
-
             li
               = link_to "Фото", photos_path
-
             li
               = link_to "Контакты", contacts_path
             li
@@ -185,13 +153,6 @@ html lang="en"
               - else
                 =link_to '#' , 'ng-show'=>"getAdmin()",id:"logout_link", "ng-click"=>"logout()" do
                   |Выход ({{getEmail()}})
-
-
-
-
-
-
-
     div class="container" ng-controller="AdminController" ng-init="init({is_admin:#{is_admin.to_json},email:#{email.to_json}})" id="AdminController3"
       - if @admin and action_name!="contacts"
         nav class="navbar navbar-default" role="navigation" ng-if="getAdmin()"
@@ -211,7 +172,6 @@ html lang="en"
         nav class="navbar navbar-default" role="navigation" ng-if="getAdmin()"
           button class="btn btn-success" data-toggle="modal" data-target="#newContact"
             |Добавить секцию
-
       = yield
       footer
         div class="row"
@@ -220,7 +180,6 @@ html lang="en"
               .col-md-2
                 p Пункт сбора гуманитарной помощи:
                 p  БП «Румянцево» Корпус  Г, 6 пандус, 5 этаж, на воротах лого «Мирное Небо»
-
               .col-md-2
                 p Финансовая помощь:
                 p  Сбербанк 6761 9600 0176 9845 41
@@ -232,11 +191,6 @@ html lang="en"
                 p Кураторы:
                 p  +7(926)469-47-66 Светлана
                 p  +7(925)299-75-96 Кристина
-
               .col-md-2
                 p Список и контакты филиалов:
                 p  -тут пока пусто-
-
-
-
-

@@ -1,5 +1,4 @@
 #links
-
   - Blog.all.each do |blog|
     h4 = blog.title
     - blog.images.each do |photo|
@@ -10,6 +9,10 @@
       a href="#{photo.image}" data-gallery="" title="#{title}"
         img src="#{photo.image.small}" style="width:200px;"
   - Image.where(:blog_id => nil).each do |photo|
+    -if photo.blog
+      -title=photo.blog.title
+    -else
+      -title=""
     h4 Без публикации
     a href="#{photo.image}" data-gallery="" title="#{title}"
       img src="#{photo.image.small}" style="width:200px;"
