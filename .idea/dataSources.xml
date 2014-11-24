@@ -5,7 +5,6 @@
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1:5432/novoross</jdbc-url>
-      <user-password>dfc0dfe3dfcedfc1dfe5dfdadfd9df92dfc6dfc0dfc4dfccdfdddfcedfd9dfd0dfc9dfffdfcedfd0dfd2df99</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails novoross: test" uuid="e3e84601-0eee-4389-a880-5ec958989267">
@@ -18,9 +17,7 @@
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1:5432/novoross</jdbc-url>
-      <user-password>dfc0dfe3dfcedfc1dfe5dfdadfd9df92dfc6dfc0dfc4dfccdfdddfcedfd9dfd0dfc9dfffdfcedfd0dfd2df99</user-password>
       <libraries />
     </data-source>
   </component>
 </project>
-
